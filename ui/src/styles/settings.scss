@@ -1,0 +1,103 @@
+/**
+ * src/styles/settings.scss
+ *
+ * Configures SASS variables and Vuetify overwrites
+ */
+
+ html, body {
+    overflow-y: hidden;
+}
+
+.database-tabs {
+    height: calc(100vh - 88px);
+    position: absolute;
+    top: 88px;
+    width: 100vw;
+}
+
+.schema-objects {
+    height: calc(100vh - 88px);
+    position: absolute;
+    width: 25vw;
+}
+
+.code-in-tooltip {
+    background-color: rgb(var(--v-theme-surface));
+    border: 1px solid rgb(var(--v-theme-surface-light));
+    border-radius: 5px;
+    margin: -20px;
+    padding: 5px 10px;
+}
+
+.editor {
+    height: calc(50vh - 88px);
+    left: 25vw;
+    position: absolute;
+    width: 75vw;
+}
+
+.results {
+    height: calc(50vh - 63px);
+    left: 25vw;
+    position: absolute;
+    top: calc(50vh - 25px);
+    width: 75vw;
+}
+
+.hljs {
+    background: #202020;
+    color: #CCCCCC;
+}
+
+.hljs-comment,
+.hljs-doctag,
+.hljs-quote,
+.hljs-variable {
+    color: #6A9954;
+}
+
+.hljs-keyword,
+.hljs-selector-tag,
+.hljs-built_in,
+.hljs-name,
+.hljs-tag {
+    color: #579CD6;
+}
+
+.hljs-string,
+.hljs-title,
+.hljs-section,
+.hljs-attribute,
+.hljs-literal,
+.hljs-template-tag,
+.hljs-template-variable,
+.hljs-type,
+.hljs-addition {
+    color: #CE9178;
+}
+
+.hljs-deletion,
+.hljs-selector-attr,
+.hljs-selector-pseudo,
+.hljs-meta {
+    color: #D4D4D4;
+}
+
+.hljs-attr {
+    color: #9DDCFE;
+}
+
+.hljs-symbol,
+.hljs-bullet,
+.hljs-link {
+    color: #00b0e8;
+}
+
+
+.hljs-emphasis {
+    font-style: italic;
+}
+
+.hljs-strong {
+    font-weight: bold;
+}
