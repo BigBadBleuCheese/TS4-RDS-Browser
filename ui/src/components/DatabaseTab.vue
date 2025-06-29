@@ -87,7 +87,7 @@
                                                     color="primary"
                                                     size="x-small"
                                                     variant="tonal"
-                                                    @click.stop="replaceSelectedCode(table.sql)"
+                                                    @click.stop="replaceSelectedCode(`${table.sql};`)"
                                                 >
                                                     <v-icon>
                                                         mdi-table-plus
@@ -258,7 +258,7 @@
                                                     color="primary"
                                                     size="x-small"
                                                     variant="tonal"
-                                                    @click.stop="replaceSelectedCode(view.sql)"
+                                                    @click.stop="replaceSelectedCode(`${view.sql};`)"
                                                 >
                                                     <v-icon>
                                                         mdi-table-plus
