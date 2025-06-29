@@ -28,7 +28,9 @@ jobs:
           npm ci
 
       - name: Compile mod source to byte code
-        run: python -m compileall -b -q -j0 .
+        run: |
+          cd rds_browser
+          python -m compileall -b -q -j0 .
 
       - name: Build the Vue website for production
         run: |
