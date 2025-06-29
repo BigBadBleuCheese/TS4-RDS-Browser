@@ -120,7 +120,7 @@
             >
                 <v-tab
                     v-for="database in persistedState.databases"
-                    :value="`${database.uniqueId}-${database.isSaveSpecific ? 'G' : 'S'}`"
+                    :value="`${database.uniqueId}-${database.isSaveSpecific ? 'S' : 'G'}`"
                 >
                     <v-icon
                         class="mr-2"
@@ -188,7 +188,7 @@
     >
         <v-tabs-window-item
             v-for="database in persistedState.databases"
-            :value="`${database.uniqueId}-${database.isSaveSpecific ? 'G' : 'S'}`"
+            :value="`${database.uniqueId}-${database.isSaveSpecific ? 'S' : 'G'}`"
         >
             <DatabaseTab
                 :unique-id="database.uniqueId"
@@ -249,10 +249,13 @@ const database = gateway.getRelationalDataStorage(uniqueId, ${addDatabaseIsSaveS
 
     function submitAddDatabase(isActive) {
         isActive.value = false;
-        persistedState.value.databases.push({
-            uniqueId: addDatabaseUniqueId.value,
-            isSaveSpecific: addDatabaseIsSaveSpecific.value,
-        });
+        if (persistedState.value.databases.findIndex(database => database.uniqueId === addDatabaseUniqueId.value && database.isSaveSpecific === addDatabaseIsSaveSpecific.value) < 0) {
+            persistedState.value.databases.push({
+                uniqueId: addDatabaseUniqueId.value,
+                isSaveSpecific: addDatabaseIsSaveSpecific.value,
+            });
+        }
+        persistedState.value.selectedTab = `${addDatabaseUniqueId.value}-${addDatabaseIsSaveSpecific.value ? 'S' : 'G'}`;
         addDatabaseUniqueId.value = '';
         addDatabaseIsSaveSpecific.value = false;
     }

@@ -354,6 +354,7 @@
         class="editor"
     >
         <v-toolbar
+            :image="persistedState.toolbarAnimation === 1 ? '/toolbar-background.gif' : '/toolbar-background.jpg'"
             title="Query Editor"
         >
             <v-tooltip
@@ -614,6 +615,31 @@
                     </v-card>
                 </template>
             </v-dialog>
+            <v-divider
+                vertical
+            />
+            <v-tooltip
+                location="top"
+                text="Toolbar Background Animation"
+            >
+                <template
+                    v-slot:activator="{ props }"
+                >
+                    <v-btn-toggle
+                        v-bind="props"
+                        v-model="persistedState.toolbarAnimation"
+                        class="ma-1"
+                        variant="flat"
+                    >
+                        <v-btn>
+                            <v-icon>mdi-stop</v-icon>
+                        </v-btn>
+                        <v-btn>
+                            <v-icon>mdi-play</v-icon>
+                        </v-btn>
+                    </v-btn-toggle>
+                </template>
+            </v-tooltip>
         </v-toolbar>
         <vue-monaco-editor
             v-model:value="tabState.code"
@@ -750,7 +776,7 @@
     }
     const tabState = persistedState.value.tabStates[tabStateId];
 
-    const tables = ref([{ name: 'shit' }]);
+    const tables = ref([]);
     const indicies = ref([]);
     const views = ref([]);
     const triggers = ref([]);
@@ -870,7 +896,7 @@
         replaceSelectedCode(`SELECT${table.columns.map(column => `
     "${column.name}"`).join(',')}
 FROM
-    "main"."${table.name}"`);
+    "main"."${table.name}";`);
     }
 
     function generateTableInsert(table) {
@@ -880,25 +906,25 @@ FROM
 ) VALUES (
     ${table.columns.map(column => column.type === 'TEXT' ? `''` : column.type === 'BINARY' ? `X'' -- place hex between single quotes` : column.type === 'INTEGER' ? `0${column.isPrimaryKey ? ' /* if this primary key is autonumbered, remove it and let SQLite provide a value */' : ''}` : `0.0`).join(`,
     `)}
-)`);
+);`);
     }
 
     function generateTableDrop(table) {
-        replaceSelectedCode(`DROP TABLE "main"."${table.name}"`);
+        replaceSelectedCode(`DROP TABLE "main"."${table.name}";`);
     }
 
     function generateIndexDropAndCreate(index) {
         replaceSelectedCode(`DROP INDEX IF EXISTS "main"."${index.name}";
-${index.sql}`);
+${index.sql};`);
     }
 
     function generateViewDrop(view) {
-        replaceSelectedCode(`DROP VIEW "main"."${view.name}"`);
+        replaceSelectedCode(`DROP VIEW "main"."${view.name}";`);
     }
 
     function generateTriggerDropAndCreate(trigger) {
         replaceSelectedCode(`DROP TRIGGER "main"."${trigger.name}";
-${trigger.sql}`);
+${trigger.sql};`);
     }
 
     function openSqliteErrorDocumentation() {
