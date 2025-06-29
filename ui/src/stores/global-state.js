@@ -4,5 +4,4 @@ export const usePersistedState = createGlobalState(() => useStorage('ts4-rds-bro
     databases: [],
     selectedTab: null,
     tabStates: {},
-    toolbarAnimation: 0,
 }, localStorage));
