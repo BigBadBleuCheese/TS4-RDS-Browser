@@ -619,7 +619,7 @@
                 vertical
             />
             <v-tooltip
-                location="top"
+                location="bottom"
                 text="Toolbar Background Animation"
             >
                 <template
