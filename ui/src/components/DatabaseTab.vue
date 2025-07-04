@@ -901,10 +901,10 @@ FROM
 
     function generateTableInsert(table) {
         replaceSelectedCode(`INSERT INTO "main"."${table.name}" (
-    ${table.columns.map(column => `"${column.name}"${column.isPrimaryKey ? ' /* if this primary key is autonumbered, remove it and let SQLite provide a value */' : ''}`).join(`,
+    ${table.columns.map(column => `"${column.name}"${column.isPrimaryKey ? ' /* if this primary key is auto incremented, remove it and let SQLite provide a value */' : ''}`).join(`,
     `)}
 ) VALUES (
-    ${table.columns.map(column => column.type === 'TEXT' ? `''` : column.type === 'BINARY' ? `X'' -- place hex between single quotes` : column.type === 'INTEGER' ? `0${column.isPrimaryKey ? ' /* if this primary key is autonumbered, remove it and let SQLite provide a value */' : ''}` : `0.0`).join(`,
+    ${table.columns.map(column => column.type === 'TEXT' ? `''` : column.type === 'BINARY' ? `X'' -- place hex between single quotes` : column.type === 'INTEGER' ? `0${column.isPrimaryKey ? ' /* if this primary key is auto incremented, remove it and let SQLite provide a value */' : ''}` : `0.0`).join(`,
     `)}
 );`);
     }
