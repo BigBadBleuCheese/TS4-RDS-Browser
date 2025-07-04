@@ -52,5 +52,5 @@ jobs:
       - name: Upload build artifact
         uses: actions/upload-artifact@v4
         with:
-          name: CodeBleu - TS4 RDS Browser
-          path: "CodeBleu - TS4 RDS Browser.ts4script"
+          name: CodeBleu-TS4_RDS_Browser
+          path: "CodeBleu-TS4_RDS_Browser.ts4script"
