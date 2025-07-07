@@ -3,4 +3,7 @@ description: Create, Search, and Edit Relational Data Storage Instances in a Bri
 creators:
 - CodeBleu
 url: https://github.com/BigBadBleuCheese/TS4-RDS-Browser/releases
-hash: 49cd684f2f1a5b825ca995afb502674ee3e32f08f7b6f475ff00ce9dabb4fa55
+hash: 75331a0eb5e06d7c78ddd2e492c795a6e6ff968df5865618f18cab2dd9e082f6
+subsumed_hashes:
+- 49cd684f2f1a5b825ca995afb502674ee3e32f08f7b6f475ff00ce9dabb4fa55
+
